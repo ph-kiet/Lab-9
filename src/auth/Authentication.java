@@ -11,7 +11,7 @@ import user.User;
 import util.MyUtil;
 
 public class Authentication {
-	protected int max_attempts = 3;
+	protected int maxAttempts = 3;
 
 	protected File usersFile;
 	protected ArrayList<User> userList;
@@ -47,9 +47,9 @@ public class Authentication {
 
 		int attemptCount = 1;
 
-		while (attemptCount <= max_attempts) {
-			// Return if reached MAX_ATTEMPTS
-			if (attemptCount == max_attempts) {
+		while (attemptCount <= maxAttempts) {
+			// Return if reached maxAttempts
+			if (attemptCount == maxAttempts) {
 				System.out.println("\nYou have reached the maximum attempts!");
 
 				foundUser.blockUser();
@@ -64,7 +64,7 @@ public class Authentication {
 				System.out.println();
 				return;
 			} else {
-				System.out.println("\nWrong Password! Remaining attempt(s): " + (max_attempts - attemptCount));
+				System.out.println("\nWrong Password! Remaining attempt(s): " + (maxAttempts - attemptCount));
 				attemptCount++;
 				password = MyUtil.getString("Enter password again: ");
 			}
