@@ -41,7 +41,7 @@ public class User {
 	}
 
 	public String getPassword(int numOfLastChars) {
-		return this.password.substring(this.password.length() - numOfLastChars, this.password.length());
+		return "*****" + this.password.substring(this.password.length() - numOfLastChars, this.password.length());
 	}
 
 	public String getPhoneNumber() {
@@ -49,6 +49,7 @@ public class User {
 	}
 
 	public String getPhoneNumber(int numOfLastChars) {
-		return this.phoneNumber.substring(this.phoneNumber.length() - numOfLastChars, this.phoneNumber.length());
+		return "*****"
+				+ this.phoneNumber.substring(this.phoneNumber.length() - numOfLastChars, this.phoneNumber.length());
 	}
 }

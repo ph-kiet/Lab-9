@@ -1,9 +1,11 @@
 package auth;
 
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
+import java.util.Scanner;
 
 import bank.Bank;
 import user.User;
@@ -14,6 +16,7 @@ public class CwAuth extends Authentication {
 		super.max_attempts = 5;
 		super.userList = bank.userList;
 		super.usersFile = bank.usersFile;
+		this.loadUsers();
 	}
 
 	public void register(String name, String username, String password) {
@@ -69,6 +72,24 @@ public class CwAuth extends Authentication {
 			}
 
 		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void loadUsers() {
+		try {
+
+			Scanner myReader = new Scanner(usersFile);
+
+			while (myReader.hasNextLine()) {
+				String result = myReader.nextLine();
+				String[] data = result.split(";");
+				User newUser = new User(data[0], data[1], data[2], data[3], data[4], Boolean.parseBoolean(data[3]));
+				userList.add(newUser);
+			}
+
+			myReader.close();
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
