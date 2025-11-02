@@ -13,7 +13,7 @@ import util.MyUtil;
 
 public class CwAuth extends Authentication {
 	public CwAuth(Bank bank) {
-		super.max_attempts = 5;
+		super.maxAttempts = 5;
 		super.userList = bank.userList;
 		super.usersFile = bank.usersFile;
 		this.loadUsers();
@@ -84,7 +84,7 @@ public class CwAuth extends Authentication {
 			while (myReader.hasNextLine()) {
 				String result = myReader.nextLine();
 				String[] data = result.split(";");
-				User newUser = new User(data[0], data[1], data[2], data[3], data[4], Boolean.parseBoolean(data[3]));
+				User newUser = new User(data[0], data[1], data[2], data[3], data[4], Boolean.parseBoolean(data[5]));
 				userList.add(newUser);
 			}
 

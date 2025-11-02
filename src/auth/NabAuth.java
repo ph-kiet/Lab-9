@@ -13,7 +13,7 @@ import util.MyUtil;
 
 public class NabAuth extends Authentication {
 	public NabAuth(Bank bank) {
-		super.max_attempts = 5;
+		super.maxAttempts = 5;
 		super.userList = bank.userList;
 		super.usersFile = bank.usersFile;
 		this.loadUsers();
@@ -69,7 +69,7 @@ public class NabAuth extends Authentication {
 			while (myReader.hasNextLine()) {
 				String result = myReader.nextLine();
 				String[] data = result.split(";");
-				User newUser = new User(data[0], data[1], data[2], data[3], Boolean.parseBoolean(data[3]));
+				User newUser = new User(data[0], data[1], data[2], data[3], Boolean.parseBoolean(data[4]));
 				userList.add(newUser);
 			}
 
